@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [App\Http\Controllers\SurveyEntriesController::class, 'create'])->name('entries.create');
+Route::post('/home', [App\Http\Controllers\SurveyEntriesController::class, 'store'])->name('entries.store');
