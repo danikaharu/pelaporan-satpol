@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', function () {
-        return view('admin.dashboard.index');
-    });
+    Route::get('/home', [App\Http\Controllers\SurveyEntriesController::class, 'create'])->name('entries.create');
+    Route::post('/home', [App\Http\Controllers\SurveyEntriesController::class, 'store'])->name('entries.store');
 
     Route::resource('/users', App\Http\Controllers\UserController::class);
 });
+
