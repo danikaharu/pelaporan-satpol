@@ -1,3 +1,10 @@
+@if ($user->entry->id)
+    <a class="btn btn-warning btn-sm" href="{{ route('entries.show', $user->entry) }}">
+        <i class="fas fa-pencil-alt">
+        </i>
+        Lihat Respon
+    </a>
+@endif
 <a class="btn btn-info btn-sm" href="{{ route('users.edit', $user->id) }}">
     <i class="fas fa-pencil-alt">
     </i>
