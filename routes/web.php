@@ -17,5 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [App\Http\Controllers\SurveyEntriesController::class, 'create'])->name('entries.create');
-Route::post('/home', [App\Http\Controllers\SurveyEntriesController::class, 'store'])->name('entries.store');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [App\Http\Controllers\SurveyEntriesController::class, 'create'])->name('entries.create');
+    Route::post('/home', [App\Http\Controllers\SurveyEntriesController::class, 'store'])->name('entries.store');
+    Route::get('/survey/{entry}', [App\Http\Controllers\SurveyEntriesController::class, 'show'])->name('entries.show');
+
+    Route::resource('/users', App\Http\Controllers\UserController::class);
+});
