@@ -32,8 +32,15 @@ class SurveyEntriesController extends Controller
             $answers['q6'] = $filename;
         }
 
-        (new Entry())->for($survey)->fromArray($answers)->push();
+        (new Entry())->for($survey)->by(auth()->user())->fromArray($answers)->push();
 
         return back()->with('success', 'Terima kasih telah mengisi form');
+    }
+
+    public function show(Entry $entry)
+    {
+        $entry = Entry::with('answers.question')->find($entry->id);
+
+        return view('admin.survey.entry', compact('entry'));
     }
 }
