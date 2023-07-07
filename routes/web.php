@@ -25,6 +25,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/survey/{entry}', [App\Http\Controllers\SurveyEntriesController::class, 'show'])->name('entries.show');
 
     Route::resource('/users', App\Http\Controllers\UserController::class);
+
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+    Route::put('/profile/{user}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::get('/', function () {

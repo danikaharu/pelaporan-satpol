@@ -11,8 +11,8 @@
          <!-- Sidebar user (optional) -->
          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
              <div class="image">
-                 @if (auth()->user()->profile->photo)
-                     <img src="{{ asset('storage/upload/photos', auth()->user()->profile->photo) }}"
+                 @if (auth()->user()->profile->photo != null)
+                     <img src="{{ asset('storage/uploads/photo/' . auth()->user()->profile->photo) }}"
                          class="img-circle elevation-2" alt="User Image">
                  @else
                      <img src="{{ asset('template/dist/img/user.jpg') }}" class="img-circle elevation-2"
@@ -58,6 +58,14 @@
                          </a>
                      </li>
                  @endcan
+                 <li class="nav-item">
+                     <a href="{{ route('profile.index') }}" class="nav-link">
+                         <i class="nav-icon fas fa-users"></i>
+                         <p>
+                             Profil
+                         </p>
+                     </a>
+                 </li>
                  <li class="nav-item">
                      <a href="{{ route('logout') }}" class="nav-link"
                          onclick="event.preventDefault();document.getElementById('logout-form').submit();">
