@@ -15,7 +15,7 @@ class SurveyEntriesController extends Controller
 
     public function create()
     {
-        return view('admin.dashboard.index', ['survey' => $this->survey()]);
+        return view('admin.survey.answer', ['survey' => $this->survey()]);
     }
 
     public function store(Request $request)
