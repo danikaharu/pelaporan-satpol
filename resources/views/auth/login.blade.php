@@ -18,7 +18,10 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Survey</b></a>
+            <a href="#">
+                <img src="{{ asset('template/dist/img/logo.png') }}" alt="Logo" class="img-fluid">
+                <b>Survey</b>
+            </a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -45,7 +48,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <input type="password" class="form-control @error('password') is-invalid @enderror"
-                            placeholder="Password" name="password">
+                            placeholder="Password : 123456" name="password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
