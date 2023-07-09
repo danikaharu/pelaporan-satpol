@@ -21,6 +21,7 @@
             <a href="#">
                 <img src="{{ asset('template/dist/img/logo.png') }}" alt="Logo" class="img-fluid">
                 <b>Survey</b>
+                <p><b>KEBUGARAN SEKOLAH</b></p>
             </a>
         </div>
         <!-- /.login-logo -->
