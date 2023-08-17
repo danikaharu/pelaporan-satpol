@@ -13,18 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
 
-    Route::get('/home', [App\Http\Controllers\SurveyEntriesController::class, 'create'])->name('entries.create');
-    Route::post('/home', [App\Http\Controllers\SurveyEntriesController::class, 'store'])->name('entries.store');
-    Route::get('/survey/{entry}', [App\Http\Controllers\SurveyEntriesController::class, 'show'])->name('entries.show');
+    Route::resource('/reports', App\Http\Controllers\ReportController::class);
+    Route::get('/report/export', [App\Http\Controllers\ReportController::class, 'export'])->name('report.export');
 
     Route::resource('/users', App\Http\Controllers\UserController::class);
+
+    Route::resource('/roles', App\Http\Controllers\RoleController::class);
 
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
     Route::put('/profile/{user}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

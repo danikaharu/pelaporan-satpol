@@ -2,46 +2,56 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Survey | @yield('title')</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Sistem Pelaporan Satpol PP</title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('template/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
-    <!-- Custom style -->
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="{{ asset('template/assets/modules/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/modules/fontawesome/css/all.min.css') }}">
+
+    <!-- CSS Libraries -->
     @stack('style')
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('template/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/css/components.css') }}">
+
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-        @include('layouts.admin.partials.navbar')
+<body>
+    <div id="app">
+        <div class="main-wrapper main-wrapper-1">
 
-        @include('layouts.admin.partials.sidebar')
+            @include('layouts.admin.partials.navbar')
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            @yield('content')
+            @include('layouts.admin.partials.sidebar')
+
+            <!-- Main Content -->
+            <div class="main-content">
+                @yield('content')
+            </div>
+            @include('layouts.admin.partials.footer')
         </div>
-        <!-- /.content-wrapper -->
-        @include('layouts.admin.partials.footer')
-
     </div>
-    <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="{{ asset('template/plugins/jquery/jquery.min.js') }} "></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script>
-    <!-- Custom script -->
+    <!-- General JS Scripts -->
+    <script src="{{ asset('template/assets/modules/jquery.min.js') }}"></script>
+    <script src="{{ asset('template/assets/modules/popper.js') }}"></script>
+    <script src="{{ asset('template/assets/modules/tooltip.js') }}"></script>
+    <script src="{{ asset('template/assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('template/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('template/assets/modules/moment.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/stisla.js') }}"></script>
+
+    <!-- JS Libraies -->
+
+    <!-- Page Specific JS File -->
     @stack('script')
+
+    <!-- Template JS File -->
+    <script src="{{ asset('template/assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('template/assets/js/custom.js') }}"></script>
 </body>
 
 </html>

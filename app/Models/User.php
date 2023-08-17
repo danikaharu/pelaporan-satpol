@@ -46,11 +46,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function profile()
-    {
-        return $this->hasOne(UserProfile::class)->withDefault();
-    }
-
     public function entry()
     {
         return $this->hasOne(Entry::class, 'participant_id')->withDefault();

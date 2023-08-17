@@ -22,22 +22,6 @@ class ProfileController extends Controller
 
             $attr = $request->validated();
 
-            if ($request->file('photo') && $request->file('photo')->isValid()) {
-
-                $filename = $request->file('photo')->hashName();
-                $path = storage_path('app/public/uploads/photo/');
-
-                if ($user->profile->photo != null && file_exists($path . $user->profile->photo)) {
-                    unlink($path . $user->profile->photo);
-                }
-
-                $request->file('photo')->storeAs('uploads/photo', $filename, 'public');
-
-                $attr['photo'] = $filename;
-            } else {
-                $attr['photo'] = $user->profile->photo;
-            }
-
             if (is_null($request->password)) {
                 unset($attr['password']);
             } else {
@@ -45,16 +29,6 @@ class ProfileController extends Controller
             }
 
             $user->update($attr);
-
-            $userProfile = UserProfile::where('user_id', $user->id)->first();
-
-            $userProfile->update([
-                'height' => $attr['height'],
-                'weight' => $attr['weight'],
-                'hobby' => $attr['hobby'],
-                'job' => $attr['job'],
-                'photo' => $attr['photo']
-            ]);
 
 
             DB::commit();
