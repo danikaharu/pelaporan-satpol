@@ -40,9 +40,9 @@ class StoreReportRequest extends FormRequest
             'jenis_sanksi' => 'required|in:Pidana,Administratif',
             'jumlah_pelanggar' => 'nullable|numeric',
             'sanksi_administratif' => 'nullable|array',
-            'denda_administratif' => 'nullable|string|min:2|max:255',
+            'denda_administratif' => 'nullable|string|max:255',
             'sanksi_pidana' => 'nullable|in:1,2',
-            'denda_pidana' => 'nullable|string|min:2|max:255',
+            'denda_pidana' => 'nullable|string|max:255',
             'lama_kurungan' => 'nullable|string|min:2|max:255',
             'foto_dokumentasi' => 'mimes:jpg,jpeg,png,mp4,ogx,oga,ogv,ogg,webm|max:20000',
         ];
