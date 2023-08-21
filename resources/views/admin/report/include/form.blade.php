@@ -263,7 +263,7 @@
 <div class="form-group">
     <label for="inputName">Lama Kurungan</label>
     <p>*Contoh: 3 Bulan</p>
-    <input type="number" name="lama_kurungan" class="form-control @error('lama_kurungan') is-invalid @enderror"
+    <input type="text" name="lama_kurungan" class="form-control @error('lama_kurungan') is-invalid @enderror"
         value="{{ isset($report) ? $report->lama_kurungan : old('lama_kurungan') }}">
     @error('lama_kurungan')
         <div class="invalid-feedback">{{ $message }}</div>
