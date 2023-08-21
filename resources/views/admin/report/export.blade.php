@@ -33,10 +33,20 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $report->kecamatan }}</td>
                     <td>{{ $report->tanggal_kegiatan }}</td>
-                    <td>{{ implode(',', $report->jenis_pelanggaran) }}</td>
+                    <td>
+                        @if ($report->jenis_pelanggaran)
+                            {{ implode(',', $report->jenis_pelanggaran) }}
+                        @else
+                        @endif
+                    </td>
                     <td>{{ $report->jumlah_pelanggar }}</td>
                     <td>{{ $report->sanksi_pidana() }}</td>
-                    <td>{{ implode(',', $report->sanksi_administratif) }}</td>
+                    <td>
+                        @if ($report->sanksi_administratif)
+                            {{ implode(',', $report->sanksi_administratif) }}
+                        @else
+                        @endif
+                    </td>
                     <td>{{ $report->denda_pidana }}</td>
                     <td>{{ $report->denda_administratif }}</td>
                 </tr>
