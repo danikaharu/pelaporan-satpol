@@ -69,7 +69,7 @@
                             <tr>
                                 <td>7</td>
                                 <td>Jenis Pelanggaran</td>
-                                <td>{{ implode(',', $report->jenis_pelanggaran) }}</td>
+                                <td>{{ implode(',', $report->jenis_pelanggaran) ?? '' }}</td>
                             </tr>
                             <tr>
                                 <td>8</td>
@@ -84,7 +84,7 @@
                             <tr>
                                 <td>10</td>
                                 <td>Sanksi Adminstratif</td>
-                                <td>{{ implode(',', $report->sanksi_administratif) }}</td>
+                                <td>{{ implode(',', $report->sanksi_administratif) ?? '' }}</td>
                             </tr>
                             <tr>
                                 <td>11</td>
