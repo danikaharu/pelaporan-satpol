@@ -69,7 +69,12 @@
                             <tr>
                                 <td>7</td>
                                 <td>Jenis Pelanggaran</td>
-                                <td>{{ implode(',', $report->jenis_pelanggaran) ?? '' }}</td>
+                                <td>
+                                    @if ($report->jenis_pelanggaran)
+                                        {{ implode(',', $report->jenis_pelanggaran) }}
+                                    @else
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>8</td>
@@ -84,7 +89,12 @@
                             <tr>
                                 <td>10</td>
                                 <td>Sanksi Adminstratif</td>
-                                <td>{{ implode(',', $report->sanksi_administratif) ?? '' }}</td>
+                                <td>
+                                    @if ($report->sanksi_administratif)
+                                        {{ implode(',', $report->sanksi_administratif) }}
+                                    @else
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>11</td>
