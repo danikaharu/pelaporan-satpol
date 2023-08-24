@@ -119,7 +119,60 @@
                             <tr>
                                 <td>15</td>
                                 <td>Foto Dokumentasi</td>
-                                <td>{{ $report->foto_dokumentasi }}</td>
+                                <td>
+                                    @foreach ($report->documentation as $value)
+                                        <img src=" {{ asset('storage/uploads/' . $value->file) }}" alt=""
+                                            width="100" height="100">
+                                    @endforeach
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Nama Pelanggar</td>
+                                <td>
+                                    @foreach ($report->offender as $index => $value)
+                                        {{ $value->name }}
+                                        @if ($index < count($report->offender) - 1)
+                                            ,
+                                        @endif
+                                    @endforeach
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Umur Pelanggar</td>
+                                <td>
+                                    @foreach ($report->offender as $index => $value)
+                                        {{ $value->age }} Tahun
+                                        @if ($index < count($report->offender) - 1)
+                                            ,
+                                        @endif
+                                    @endforeach
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Alamat Pelanggar</td>
+                                <td>
+                                    @foreach ($report->offender as $index => $value)
+                                        {{ $value->address }}
+                                        @if ($index < count($report->offender) - 1)
+                                            ,
+                                        @endif
+                                    @endforeach
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>Jenis Kelamin Pelanggar</td>
+                                <td>
+                                    @foreach ($report->offender as $index => $value)
+                                        {{ $value->gender }}
+                                        @if ($index < count($report->offender) - 1)
+                                            ,
+                                        @endif
+                                    @endforeach
+                                </td>
                             </tr>
                         </tbody>
                     </table>

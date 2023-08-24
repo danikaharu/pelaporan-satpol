@@ -38,6 +38,16 @@ class Report extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function documentation()
+    {
+        return $this->hasMany(Documentation::class);
+    }
+
+    public function offender()
+    {
+        return $this->hasMany(Offender::class);
+    }
+
     public function kecamatan()
     {
         if ($this->kecamatan == 1) {

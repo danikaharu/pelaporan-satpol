@@ -44,7 +44,12 @@ class StoreReportRequest extends FormRequest
             'sanksi_pidana' => 'nullable|in:1,2',
             'denda_pidana' => 'nullable|string|max:255',
             'lama_kurungan' => 'nullable|string|min:2|max:255',
-            'foto_dokumentasi' => 'mimes:jpg,jpeg,png,mp4,ogx,oga,ogv,ogg,webm|max:20000',
+            'file' => 'nullable',
+            'file.*' => 'mimes:jpg,jpeg,png,mp4,ogx,oga,ogv,ogg,webm|max:10000',
+            'name.*' => 'required',
+            'age.*' => 'required',
+            'gender.*' => 'required',
+            'address.*' => 'required',
         ];
     }
 }

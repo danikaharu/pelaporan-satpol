@@ -59,8 +59,8 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Nama</th>
-                                            <th>Tanggal Pengisian</th>
+                                            <th>Nama Pelapor</th>
+                                            <th>Tanggal Kegiatan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -92,12 +92,10 @@
                     searchable: false
                 },
                 {
-                    data: 'user',
-                    name: 'user',
+                    data: 'nama_pelapor',
                 },
                 {
-                    data: 'created_at',
-                    name: 'created_at',
+                    data: 'tanggal_kegiatan',
                 },
                 {
                     data: 'action',

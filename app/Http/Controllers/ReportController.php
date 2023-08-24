@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Exports\ReportExport;
 use App\Http\Requests\StoreReportRequest;
 use App\Http\Requests\UpdateReportRequest;
+use App\Models\Documentation;
+use App\Models\Offender;
 use App\Models\Report;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
+use Image;
 
 class ReportController extends Controller
 {
@@ -24,11 +28,8 @@ class ReportController extends Controller
 
             return Datatables::of($reports)
                 ->addIndexColumn()
-                ->addColumn('user', function ($row) {
-                    return $row->user ? $row->user->name : '-';
-                })
-                ->addColumn('created_at', function ($row) {
-                    return $row->created_at ? $row->created_at->isoFormat('D MMMM Y') : '-';
+                ->addColumn('tanggal_kegiatan', function ($row) {
+                    return $row->tanggal_kegiatan ? $row->tanggal_kegiatan : '-';
                 })
                 ->addColumn('action', 'admin.report.include.action')
                 ->toJson();
@@ -52,18 +53,53 @@ class ReportController extends Controller
     {
         $attr = $request->validated();
 
+        try {
+            DB::beginTransaction();
 
-        if ($request->file('foto_dokumentasi') && $request->file('foto_dokumentasi')->isValid()) {
+            // Create Report
+            $report =  Report::create($attr);
 
-            $filename = $request->file('foto_dokumentasi')->hashName();
-            $request->file('foto_dokumentasi')->storeAs('uploads', $filename, 'public');
+            foreach ($attr['name'] as $key => $value) {
+                $offender = new Offender();
+                $offender->report_id = $report->id;
+                $offender->name = $value;
+                $offender->age = $request->age[$key];
+                $offender->address = $request->address[$key];
+                $offender->gender = $request->gender[$key];
+                $offender->save();
+            }
 
-            $attr['foto_dokumentasi'] = $filename;
+            if ($request->hasFile('file')) {
+                $images = $request->file('file');
+
+                foreach ($images as $image) {
+
+                    if ($image->isValid()) {
+                        $path = storage_path('app/public/uploads/');
+                        $filename = $image->hashName();
+
+                        Image::make($image->getRealPath())->resize(500, 500, function ($constraint) {
+                            $constraint->upsize();
+                            $constraint->aspectRatio();
+                        })->save($path . $filename);
+
+                        $attr['file'] = $filename;
+                    }
+                    // Create Documentation
+                    Documentation::create([
+                        'report_id' => $report->id,
+                        'file' => $attr['file'],
+                    ]);
+                }
+            }
+            DB::commit();
+
+            return back()->with('success', 'Terima kasih telah mengisi form');
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return redirect()->route('reports.index')
+                ->with('error', $th->getMessage());
         }
-
-        Report::create($attr);
-
-        return back()->with('success', 'Terima kasih telah mengisi form');
     }
 
     /**
@@ -97,12 +133,22 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
+
         try {
+            $documentation = Documentation::where('report_id', $report->id)->get();
+
             $path = storage_path('app/public/uploads/');
 
-            if ($report->foto_dokumentasi && file_exists($path . $report->foto_dokumentasi)) {
-                unlink($path . $report->foto_dokumentasi);
+            if ($documentation) {
+                foreach ($documentation as $item) {
+                    if ($item->file && file_exists($path . $item->file)) {
+                        unlink($path . $item->file);
+                    }
+
+                    $item->delete();
+                }
             }
+
 
             $report->delete();
 

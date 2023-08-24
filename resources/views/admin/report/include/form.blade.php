@@ -151,6 +151,13 @@
             Melanggar ketentuan Penyimpanan Minuman beralkohol
         </label>
     </div>
+    <div class="form-check">
+        <input class="form-check-input" id="lainnyaCheckbox" type="checkbox" name="jenis_pelanggaran[]">
+        <label class="form-check-label" for="defaultCheck1">
+            Lainnya
+        </label>
+        <input type="text" id="lainnya">
+    </div>
     @error('jenis_pelanggaran')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
@@ -176,12 +183,14 @@
 </div>
 <div class="form-group">
     <label for="inputName">Jumlah Pelanggar</label>
-    <input type="number" name="jumlah_pelanggar"class="form-control @error('jumlah_pelanggar') is-invalid @enderror"
+    <input id="jumlah_pelanggar" type="number" name="jumlah_pelanggar"
+        class="form-control @error('jumlah_pelanggar') is-invalid @enderror"
         value="{{ isset($report) ? $report->jumlah_pelanggar : old('jumlah_pelanggar') }}">
     @error('jumlah_pelanggar')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
+<div id="nama_pelanggar_container"></div>
 <div class="form-group">
     <label for="inputName">Sanksi Administratif</label>
     <div class="form-check">
@@ -271,10 +280,8 @@
 </div>
 <div class="form-group">
     <label for="inputName">Foto Dokumentasi</label>
-    <input type="file" name="foto_dokumentasi"
-        class="form-control @error('foto_dokumentasi') is-invalid @enderror"
-        value="{{ isset($report) ? $report->foto_dokumentasi : old('foto_dokumentasi') }}">
-    @error('foto_dokumentasi')
+    <input type="file" name="file[]" class="form-control @error('file') is-invalid @enderror" multiple>
+    @error('file')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
