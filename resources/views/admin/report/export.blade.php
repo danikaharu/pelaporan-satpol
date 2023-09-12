@@ -184,7 +184,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td style="text-align: center">NIP. 197809012007011015</td>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
@@ -201,6 +201,22 @@
                 <td></td>
                 <td></td>
                 <td style="text-align: center">Fredy Lasut</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align: center">NIP. 197809012007011015</td>
             </tr>
         </tfoot>
     </table>
