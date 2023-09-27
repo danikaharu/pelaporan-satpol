@@ -136,7 +136,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td style="text-align: center">Plt. Kepala Dinas Satpol PP dan Damkar</td>
+                <td style="text-align: center">Kepala Dinas Satpol PP dan Damkar</td>
             </tr>
             <tr>
                 <td></td>
@@ -200,7 +200,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td style="text-align: center">Fredy Lasut</td>
+                <td style="text-align: center">Abd. Wahab Hadju, SH</td>
             </tr>
             <tr>
                 <td></td>
@@ -216,7 +216,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td style="text-align: center">NIP. 197809012007011015</td>
+                <td style="text-align: center">NIP. 197005302005011007</td>
             </tr>
         </tfoot>
     </table>
